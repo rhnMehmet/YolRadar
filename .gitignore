@@ -1,0 +1,36 @@
+# Local migration snapshots
+/.migration-backups/
+
+# Dependencies and generated output in every workspace
+node_modules/
+.expo/
+dist/
+.cache/
+.npm/
+*.tsbuildinfo
+*.log
+
+# Local environment secrets
+.env
+.env.*
+!.env.example
+
+# Private signing material and local credentials in every workspace
+*.key
+*.pem
+*.p8
+*.p12
+*.pfx
+*.jks
+*.keystore
+*.mobileprovision
+*.cer
+*.crt
+.git-credentials
+.netrc
+.pypirc
+.npmrc
+
+# Local OS/editor files
+.DS_Store
+Thumbs.db

@@ -1,0 +1,17 @@
+{
+  "name": "roadsense",
+  "version": "0.1.0",
+  "private": true,
+  "packageManager": "npm@11.19.1",
+  "engines": { "node": ">=24.22.0", "npm": ">=11.19.1" },
+  "workspaces": ["apps/mobile", "apps/admin", "packages/shared"],
+  "scripts": {
+    "typecheck": "npm run typecheck --workspaces",
+    "test": "npm run test --workspace=@roadsense/shared",
+    "build:admin": "npm run build --workspace=admin",
+    "dev:admin": "npm run dev --workspace=admin -- --host 127.0.0.1 --port 5173 --strictPort",
+    "dev:mobile": "npm run start --workspace=mobile -- --go --lan --port 8081",
+    "verify:migration": "node scripts/workspace-lock.mjs verify"
+  },
+  "devDependencies": { "typescript": "6.0.3" }
+}
