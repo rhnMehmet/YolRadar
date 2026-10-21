@@ -1,9 +1,12 @@
-import { useState } from 'react'
+import { lazy, Suspense, useState } from 'react'
 import type { CSSProperties, ReactNode } from 'react'
 import { getDamageTypeLabel, getReportStatusLabel } from '@roadsense/shared'
 import { demoReports, damageTypes, formatReportDate, reportStatuses } from './data/reports'
 import type { Report, ReportStatus } from './data/reports'
+import { DamageMapBoundary } from './features/damage-map/DamageMapBoundary'
 import './App.css'
+
+const DamageMap = lazy(() => import('./features/damage-map/DamageMap'))
 
 type Section = 'overview' | 'reports' | 'map' | 'statistics'
 type IconName = 'grid' | 'list' | 'map' | 'chart' | 'arrow' | 'pin' | 'clock' | 'check' | 'layers' | 'search'
@@ -124,7 +127,13 @@ function App() {
 
           {section === 'reports' && <section className="panel reports-panel" aria-labelledby="reports-title"><div className="panel-heading"><div><span className="section-kicker">ÖRNEK KAYITLAR</span><h2 id="reports-title">Hasar Bildirimleri</h2></div><span className="record-count">{filteredReports.length} / {demoReports.length} kayıt</span></div><div className="table-filters"><label className="search-field"><Icon name="search" size={18} /><span className="sr-only">Bildirimlerde ara</span><input value={query} onChange={(event) => setQuery(event.target.value)} placeholder="ID, hasar türü veya konum ara…" /></label><label className="status-filter"><span>Durum</span><select value={statusFilter} onChange={(event) => setStatusFilter(event.target.value as ReportStatus | 'Tümü')}><option value="Tümü">Tüm durumlar</option>{reportStatuses.map((status) => <option key={status} value={status}>{getReportStatusLabel(status)}</option>)}</select></label></div><ReportsTable reports={filteredReports} /><div className="table-footer" aria-live="polite">{filteredReports.length} örnek bildirim gösteriliyor.</div></section>}
 
-          {section === 'map' && <section className="panel map-placeholder" aria-labelledby="map-title"><span className="map-placeholder-icon"><Icon name="map" size={40} /></span><span className="section-kicker">SONRAKİ AŞAMA</span><h2 id="map-title">Hasar Haritası</h2><p>Hasar konumlarını haritada inceleme özelliği sonraki aşamada eklenecek. Şimdilik örnek konumları bildirim listesinden inceleyebilirsiniz.</p><button type="button" className="primary-button" onClick={() => setSection('reports')}>Bildirimleri görüntüle<Icon name="arrow" size={17} /></button></section>}
+          {section === 'map' && (
+            <DamageMapBoundary>
+              <Suspense fallback={<div className="panel map-fallback" role="status">Harita hazırlanıyor…</div>}>
+                <DamageMap />
+              </Suspense>
+            </DamageMapBoundary>
+          )}
 
           {section === 'statistics' && <div className="statistics-grid"><section className="panel" aria-labelledby="stats-title"><div className="panel-heading"><div><span className="section-kicker">ÖRNEK VERİLER</span><h2 id="stats-title">Hasar türüne göre dağılım</h2></div><span className="record-count">{demoReports.length} kayıt</span></div><div className="damage-bars">{damageTypes.map((type) => { const count = demoReports.filter((report) => report.damageType === type).length; return <div className="damage-bar-row" key={type}><div><span>{getDamageTypeLabel(type)}</span><strong>{count}<small> bildirim</small></strong></div><div className="bar-track" role="img" aria-label={`${getDamageTypeLabel(type)}: ${count} örnek bildirim`}><span style={{ width: `${(count / demoReports.length) * 100}%` }} /></div></div> })}<p className="chart-note">Tüm hesaplamalar aynı örnek bildirim listesini kullanır.</p></div></section>{distribution}</div>}
 

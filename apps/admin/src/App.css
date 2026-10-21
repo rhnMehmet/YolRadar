@@ -109,10 +109,9 @@ tbody tr:hover { background: #fcfdfd; }
 .status-filter { display: flex; align-items: center; gap: 9px; font-size: 11px; color: #6a7d86; }
 .status-filter select { border: 1px solid #dce4e7; color: #455d67; border-radius: 6px; padding: 10px 28px 10px 10px; background: #fff; font-size: 11px; }
 .empty-cell { text-align: center; padding: 45px 20px; color: #7c8f98; }
-.map-placeholder { display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; min-height: 430px; padding: 50px 24px; }
-.map-placeholder-icon { width: 92px; height: 92px; display: grid; place-items: center; background: #eff5f1; color: #618c78; border-radius: 24px; margin-bottom: 26px; }
-.map-placeholder h2 { font-size: 23px; margin-bottom: 14px; }
-.map-placeholder p { max-width: 430px; color: #7a8b93; font-size: 13px; line-height: 1.8; }
+.map-fallback { display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; min-height: 430px; padding: 40px 24px; color: #617b6d; font-size: 13px; }
+.map-fallback h2 { margin-bottom: 14px; }
+.map-fallback p { max-width: 430px; line-height: 1.8; }
 .primary-button { display: flex; align-items: center; gap: 10px; color: #fff; background: #0b6b59; border: 1px solid #0b6b59; border-radius: 6px; padding: 12px 17px; margin-top: 25px; font-size: 12px; }
 .primary-button:hover { background: #145443; }
 .statistics-grid { display: grid; grid-template-columns: minmax(0, 1fr) 300px; gap: 24px; align-items: start; }

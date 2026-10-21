@@ -1,0 +1,43 @@
+.damage-map { isolation: isolate; }
+.damage-map__heading { padding-bottom: 16px; }
+.damage-map__count { color: #517368; background: #edf5f0; border: 1px solid #dce9e2; border-radius: 5px; padding: 6px 9px; font-size: 10px; white-space: nowrap; }
+.damage-map__demo-notice { margin: 0 23px 20px; padding: 11px 13px; background: #faf7ef; border-left: 3px solid #be9959; color: #7d6844; font-size: 11px; line-height: 1.7; }
+.damage-map__canvas-frame { position: relative; border-block: 1px solid #dce4e7; }
+.damage-map__canvas { width: 100%; height: 510px; background: #e8eeeb; font-family: inherit; }
+.damage-map__loading { position: absolute; z-index: 500; left: 50%; bottom: 35px; transform: translateX(-50%); width: max-content; max-width: calc(100% - 24px); padding: 9px 13px; border-radius: 5px; background: #fffffff2; box-shadow: 0 2px 12px #132f3920; color: #405f54; font-size: 11px; pointer-events: none; }
+.damage-map__center-control button { margin: 10px 10px 0 0; border: 1px solid #b6c7bd; border-radius: 5px; background: white; color: #2d5b4a; padding: 9px 12px; box-shadow: 0 1px 5px #0002; font-size: 11px; }
+.damage-map__center-control button:hover { background: #edf5f0; }
+.damage-map .leaflet-control-attribution { font-size: 10px; background: #ffffffed; color: #465a55; max-width: 100%; }
+.damage-map .leaflet-control-attribution a { color: #216c59; }
+.damage-map__pin-host { background: none; border: 0; }
+.damage-map__pin { display: grid; place-items: center; width: 34px; height: 34px; border: 3px solid white; border-radius: 50% 50% 50% 5px; transform: rotate(-45deg); color: white; box-shadow: 0 2px 8px #132f3955; }
+.damage-map__pin b { transform: rotate(45deg); font-size: 14px; font-weight: 700; font-variant-numeric: tabular-nums; }
+.damage-map__pin--new, .damage-map__legend-dot--new { background: #a66e20; }
+.damage-map__pin--in_review, .damage-map__legend-dot--in_review { background: #3d729a; }
+.damage-map__pin--resolved, .damage-map__legend-dot--resolved { background: #35765a; }
+.damage-map__pin-host:hover .damage-map__pin { filter: brightness(1.12); }
+.damage-map__popup { padding-top: 3px; color: #38564b; }
+.damage-map__popup-kicker { color: #6d867b; font-size: 8px; letter-spacing: 1px; font-weight: 600; }
+.damage-map__popup h3 { font-size: 16px; margin: 8px 0 13px; color: #284b3e; }
+.damage-map__popup dl { margin: 0; }
+.damage-map__popup dl > div { margin-bottom: 8px; }
+.damage-map__popup dt { color: #7b8e85; font-size: 10px; margin-bottom: 3px; }
+.damage-map__popup dd { margin: 0; font-size: 11px; font-weight: 600; }
+.damage-map__popup p { padding-top: 10px; margin: 12px 0 2px; border-top: 1px solid #e1e9e4; color: #857046; font-size: 10px; line-height: 1.6; }
+.damage-map__error { display: flex; align-items: center; justify-content: space-between; gap: 15px; background: #fff5e6; padding: 13px 23px; border-bottom: 1px solid #ecdfcb; color: #7d5c2b; }
+.damage-map__error p { font-size: 11px; line-height: 1.7; }
+.damage-map__error button { flex-shrink: 0; border: 1px solid #c7a467; border-radius: 5px; padding: 8px 11px; background: #fffdfa; font-size: 11px; color: #79531c; }
+.damage-map__legend { display: flex; flex-wrap: wrap; gap: 14px 24px; padding: 19px 23px; border-bottom: 1px solid #edf0f2; }
+.damage-map__legend > span { display: flex; align-items: center; gap: 8px; color: #536e61; font-size: 11px; }
+.damage-map__legend-dot { display: grid; place-items: center; width: 21px; height: 21px; border-radius: 50%; color: white; font-size: 10px; font-style: normal; font-weight: 600; }
+.damage-map__footer { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 7px 22px; padding: 14px 23px; color: #7a8f84; font-size: 10px; line-height: 1.7; }
+@media (max-width: 980px) { .damage-map__canvas { height: 470px; } }
+@media (max-width: 640px) {
+  .damage-map__demo-notice { margin-inline: 17px; font-size: 10px; }
+  .damage-map__canvas { height: 400px; }
+  .damage-map__legend, .damage-map__footer, .damage-map__error { padding-inline: 17px; }
+  .damage-map__legend { gap: 12px 18px; }
+  .damage-map__error { align-items: flex-start; flex-direction: column; gap: 8px; }
+  .damage-map__center-control button { padding: 8px; font-size: 10px; }
+  .damage-map .leaflet-control-attribution { font-size: 9px; }
+}
